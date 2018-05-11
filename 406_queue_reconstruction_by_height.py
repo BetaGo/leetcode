@@ -18,9 +18,9 @@
     [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
 """
 
-input0 = [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]];
-input1 = [[9,0],[7,0],[1,9],[3,0],[2,7],[5,3],[6,0],[3,4],[6,2],[5,2]];
-output0 = [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]];
+input0 = [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+input1 = [[9,0],[7,0],[1,9],[3,0],[2,7],[5,3],[6,0],[3,4],[6,2],[5,2]]
+output0 = [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
 
 class Solution(object):
     def reconstructQueue(self, people):
@@ -39,8 +39,8 @@ class Solution(object):
                 people = left + [people[i]] + right
         return people
 
-solution = Solution();
+solution = Solution()
 s_output0 = solution.reconstructQueue(input0)
 s_output1 = solution.reconstructQueue(input1)
-print(s_output1);
+print(s_output1)
         
