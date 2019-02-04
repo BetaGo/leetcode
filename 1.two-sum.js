@@ -35,19 +35,12 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-  let result;
-
+  let valIndex = {};
   for (let i = 0; i < nums.length; i++) {
-    let a = nums[i];
-    for (let j = i + 1; j < nums.length; j++) {
-      if (a + nums[j] === target) {
-        result = [i, j];
-        break;
-      }
+    const t = target - nums[i];
+    if (valIndex[t] !== undefined) {
+      return [valIndex[t], i];
     }
-    if (result) {
-      break;
-    }
+    valIndex[nums[i]] = i;
   }
-  return result;
 };
