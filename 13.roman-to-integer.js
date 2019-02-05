@@ -82,69 +82,38 @@
  * @return {number}
  */
 var romanToInt = function(s) {
-  const aDict = {
-    I: 1,
-    II: 2,
-    III: 3,
-    IV: 4,
-    V: 5,
-    VI: 6,
-    VII: 7,
-    VIII: 8,
-    IX: 9,
-    X: 10,
-    XX: 20,
-    XXX: 30,
-    XL: 40,
-    L: 50,
-    LX: 60,
-    LXX: 70,
-    LXXX: 80,
-    XC: 90,
-    C: 100,
-    CC: 200,
-    CCC: 300,
-    CD: 400,
-    D: 500,
-    DC: 600,
-    DCC: 700,
-    DCCC: 800,
-    CM: 900,
-    M: 1000,
-    MM: 2000,
-    MMM: 3000
-  };
-  const dDict = { M: 1000, MM: 2000, MMM: 3000 };
-  const d = ["I", "V", "X", "L", "C", "D", "M"];
-  const sArr = s.split("");
-  let resultArr = [];
-  let str = "";
-  for (let i = 0; i < sArr.length; i++) {
-    const idxLeft = d.indexOf(sArr[i]);
-    const idxRight = d.indexOf(sArr[i + 1]);
-    if (idxLeft < idxRight) {
-      // for 4,9,40,90,400,900
-      resultArr.push(`${sArr[i]}${sArr[i + 1]}`);
-      i = i + 1;
-    } else if (idxLeft % 2 === 0) {
-      str = str ? str : sArr[i];
-      // for I, X, C, M
-      if (idxLeft === idxRight) {
-        str += sArr[i + 1];
-      } else {
-        resultArr.push(str);
-        str = "";
-      }
+  let maxLevel = 1;
+  let resultValue = 0;
+  s = s.split("");
+  for (let i = s.length - 1; i >= 0; i--) {
+    let v = valueDict[s[i]];
+    const curLevel = levelDict[s[i]];
+    if (curLevel >= maxLevel) {
+      maxLevel = curLevel;
     } else {
-      str = str ? str : sArr[i];
-      if (idxLeft - idxRight === 1) {
-        str += sArr[i + 1];
-      } else {
-        resultArr.push(str);
-        str = "";
-      }
+      v = -v;
     }
+    resultValue += v;
   }
-  console.log(resultArr);
-  return resultArr.reduce((a, b) => a + aDict[b], 0);
+  return resultValue;
+};
+
+const levelDict = {
+  I: 1,
+  V: 2,
+  X: 3,
+  L: 4,
+  C: 5,
+  D: 6,
+  M: 7
+};
+
+const valueDict = {
+  I: 1,
+  V: 5,
+  X: 10,
+  L: 50,
+  C: 100,
+  D: 500,
+  M: 1000
 };
