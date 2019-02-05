@@ -46,22 +46,14 @@
  * @return {number}
  */
 var reverse = function(x) {
-  let negative = false;
   if (x < -2147483648 || x > 2147483647) {
     return 0;
   }
-  if (x < 0) {
-    negative = true;
-    x = -x;
-  }
-  let t = x;
   let result = 0;
-  while (x >= 1) {
-    x = t / 10;
-    t = Math.floor(x);
-    result = result * 10 + (x * 10 - t * 10);
+  while (x !== 0) {
+    result = result * 10 + (x % 10);
+    x = parseInt(x / 10);
   }
-  result = negative ? -result : result;
   if (result < -2147483648 || result > 2147483647) {
     result = 0;
   }
