@@ -41,26 +41,15 @@
  * @return {string}
  */
 var longestCommonPrefix = function(strs) {
-  let commonPrefix = strs[0] || "";
+  if (strs.length === 0) return "";
+  let commonPrefix = strs[0];
   for (let i = 1; i < strs.length; i++) {
-    commonPrefix = getCommonPrefix(commonPrefix, strs[i]);
-    if (commonPrefix === "") {
-      return commonPrefix;
+    while (strs[i].indexOf(commonPrefix) !== 0) {
+      commonPrefix = commonPrefix.slice(0, -1);
+      if (commonPrefix === "") {
+        return "";
+      }
     }
   }
   return commonPrefix;
-};
-
-/**
- *
- * @param {string} strA
- * @param {string} strB
- */
-const getCommonPrefix = (strA, strB) => {
-  for (let i = 0; i < strA.length; i++) {
-    if (strA[i] !== strB[i]) {
-      return strA.slice(0, i);
-    }
-  }
-  return strA;
 };
