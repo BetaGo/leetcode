@@ -34,28 +34,20 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function(l1, l2) {
-  if (!l1) return l2;
-  if (!l2) return l1;
-  let curList = l1.val <= l2.val ? l1 : l2;
-  let largestList = l1.val <= l2.val ? l2 : l1;
-  const mergedList = new ListNode(curList.val);
-  let cursor = mergedList;
-  let nextList = null;
-  while ((nextList = curList.next)) {
-    if (nextList.val <= largestList.val) {
-      cursor.next = new ListNode(nextList.val);
-      cursor = cursor.next;
-      curList = curList.next;
+  const m = new ListNode();
+  let current = m;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      current.next = l1;
+      l1 = l1.next;
     } else {
-      cursor.next = new ListNode(largestList.val);
-      curList = largestList;
-      largestList = nextList;
-      cursor = cursor.next;
+      current.next = l2;
+      l2 = l2.next;
     }
+    current = current.next;
   }
-  cursor.next = largestList;
-
-  return mergedList;
+  current.next = l1 ? l1 : l2;
+  return m.next;
 };
 
 function ListNode(val) {
