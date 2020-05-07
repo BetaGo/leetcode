@@ -1,0 +1,23 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "leetcode practice",
+  "main": "1.two-sum.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BetaGo/leetcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BetaGo/leetcode/issues"
+  },
+  "homepage": "https://github.com/BetaGo/leetcode#readme",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
