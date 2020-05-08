@@ -1,4 +1,4 @@
-const addTwoNumbers = require("./2.add-two-numbers");
+const { addTwoNumbers } = require("./2.add-two-numbers");
 require("./base");
 
 test("0 + 0", () => {

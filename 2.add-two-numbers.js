@@ -76,4 +76,4 @@ var addTwoNumbers = function (l1, l2) {
 };
 // @lc code=end
 
-module.exports = addTwoNumbers;
+exports.addTwoNumbers = addTwoNumbers;
