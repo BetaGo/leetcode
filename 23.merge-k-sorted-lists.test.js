@@ -19,3 +19,28 @@ test(`
     ])
   ).toEqual(res);
 });
+
+test(`
+* Input: []
+* Output: []
+`, () => {
+  let res = null;
+  expect(mergeKLists([])).toEqual(res);
+});
+
+test(`
+* Input: [null]
+* Output: []
+`, () => {
+  let res = null;
+  expect(mergeKLists([])).toEqual(res);
+});
+
+test(`
+* Input: [[],[-1,5,11],[],[6,10]]
+* Output: [-1,5,6,10,11]
+`, () => {
+  // TODO:
+  // let res = createListNodeNumber();
+  // expect(mergeKLists([])).toEqual(res);
+});

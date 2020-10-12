@@ -38,41 +38,37 @@
  *     this.next = (next===undefined ? null : next)
  * }
  */
+var mergeTwoLists = function (l1, l2) {
+  const m = new ListNode();
+  let current = m;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      current.next = l1;
+      l1 = l1.next;
+    } else {
+      current.next = l2;
+      l2 = l2.next;
+    }
+    current = current.next;
+  }
+  current.next = l1 ? l1 : l2;
+  return m.next;
+};
+
 /**
  * @param {ListNode[]} lists
  * @return {ListNode}
  */
 var mergeKLists = function (lists) {
-  let l;
-  let tmp;
-  while (lists.length) {
-    lists.sort((a, b) => a.val - b.val);
-    for (let i = 0; i < lists.length; i++) {
-      // if (!l) {
-      //   l = new ListNode(lists[0].val);
-      //   lists[0] = lists[0].next;
-      //   tmp = l;
-      // }
-      let preNode = lists[i - 1];
-      while (preNode && preNode.val <= lists[i].val) {
-        tmp.next = new ListNode(preNode.val);
-        preNode = preNode.next;
-        tmp = tmp.next;
-      }
-      if (!l) {
-        l = new ListNode(lists[i].val);
-        lists[i] = lists[i].next;
-        tmp = l;
-      } else {
-        tmp.next = new ListNode(lists[i].val);
-        lists[i] = lists[i].next;
-        tmp = tmp.next;
-      }
-    }
-    lists = lists.filter((v) => v !== null);
+  if (!lists.length) return null;
+  if (lists.length === 1) return lists[0];
+  while (lists.length > 1) {
+    const a = lists.shift();
+    const b = lists.shift();
+    const head = mergeTwoLists(a, b);
+    lists.push(head);
   }
-  return l;
-};
+  return lists[0];
 // @lc code=end
 
 exports.mergeKLists = mergeKLists;
