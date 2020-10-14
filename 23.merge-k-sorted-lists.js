@@ -69,6 +69,7 @@ var mergeKLists = function (lists) {
     lists.push(head);
   }
   return lists[0];
+};
 // @lc code=end
 
 exports.mergeKLists = mergeKLists;
